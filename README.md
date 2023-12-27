@@ -1,16 +1,17 @@
 # axis_assignment
 
-A new Flutter project.
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run use ```dart run build_runner build``` before running the app
+for running the app use ```flutter run --dart-define=API_KEY=API_KEY_HERE``` replace with the api key provided or add the api key to launch.json
 
-A few resources to get you started if this is your first Flutter project:
+## Packages used:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+flutter_bloc for state management
+hive for caching
+image_gallery_saver for saving images
+photo_view for displaying images
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
