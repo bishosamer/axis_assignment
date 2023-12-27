@@ -9,20 +9,26 @@
             "request": "launch",
             "type": "dart",
             "args": [
-                "--dart-define=API_KEY=8026aa521e5a509c9bffa26def48ec08" // Replace with your API key
+                "--dart-define=API_KEY=API_KEY_HERE" // Replace with your API key
               ],
         },
         {
             "name": "axis_assignment (profile mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "profile",
+            "args": [
+                "--dart-define=API_KEY=API_KEY_HERE" // Replace with your API key
+              ],
         },
         {
             "name": "axis_assignment (release mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "release",
+            "args": [
+                "--dart-define=API_KEY=API_KEY_HERE" // Replace with your API key
+              ],
         }
     ]
 }
