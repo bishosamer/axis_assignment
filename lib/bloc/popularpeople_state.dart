@@ -18,3 +18,26 @@ class PopularPeopleLoaded extends PopularPeopleState {
 class PopularPeopleLoading extends PopularPeopleState {
   const PopularPeopleLoading({required super.people, required super.page});
 }
+
+class PeopleDetailsLoading extends PopularPeopleState {
+  final PersonPreview personPreview;
+  const PeopleDetailsLoading(
+      {required super.people,
+      required this.personPreview,
+      required super.page});
+}
+
+class PeopleDetailsLoaded extends PopularPeopleState {
+  final PersonPreview personPreview;
+  final Person person;
+  const PeopleDetailsLoaded(
+      {required super.people,
+      required this.person,
+      required this.personPreview,
+      required super.page});
+}
+
+class PeopleErrorState extends PopularPeopleState {
+  final String message;
+  PeopleErrorState(this.message, {required super.people, required super.page});
+}

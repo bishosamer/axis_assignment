@@ -49,44 +49,49 @@ class Person extends HiveObject {
 
   @HiveField(14)
   List<Movie> knownFor; // New field representing known movies for the person
-
-  Person({
-    required this.adult,
-    required this.alsoKnownAs,
-    required this.biography,
-    required this.birthday,
-    required this.deathday,
-    required this.gender,
-    required this.homepage,
-    required this.id,
-    required this.imdbId,
-    required this.knownForDepartment,
-    required this.name,
-    required this.placeOfBirth,
-    required this.popularity,
-    required this.profilePath,
-    required this.knownFor, // Updated constructor to include knownFor parameter
-  });
+  @HiveField(15)
+  List<String> imageUrls;
+  Person(
+      {required this.adult,
+      required this.alsoKnownAs,
+      required this.biography,
+      required this.birthday,
+      required this.deathday,
+      required this.gender,
+      required this.homepage,
+      required this.id,
+      required this.imdbId,
+      required this.knownForDepartment,
+      required this.name,
+      required this.placeOfBirth,
+      required this.popularity,
+      required this.profilePath,
+      required this.knownFor,
+      required this.imageUrls});
 
   factory Person.fromJson(Map<String, dynamic> json) {
+    List<String> imagesList = [];
+    final images = json['images']['profiles'] as List<dynamic>;
+    for (var image in images) {
+      imagesList.add(image['file_path']);
+    }
     return Person(
-      adult: json['adult'] ?? false,
-      alsoKnownAs: List<String>.from(json['also_known_as'] ?? []),
-      biography: json['biography'] ?? '',
-      birthday: json['birthday'] ?? '',
-      deathday: json['deathday'] ?? '',
-      gender: json['gender'] ?? 0,
-      homepage: json['homepage'] ?? '',
-      id: json['id'] ?? 0,
-      imdbId: json['imdb_id'] ?? '',
-      knownForDepartment: json['known_for_department'] ?? '',
-      name: json['name'] ?? '',
-      placeOfBirth: json['place_of_birth'] ?? '',
-      popularity: json['popularity']?.toDouble() ?? 0.0,
-      profilePath: json['profile_path'] ?? '',
-      knownFor:
-          _parseKnownFor(json['known_for'] ?? []), // Parse knownFor movies
-    );
+        adult: json['adult'] ?? false,
+        alsoKnownAs: List<String>.from(json['also_known_as'] ?? []),
+        biography: json['biography'] ?? '',
+        birthday: json['birthday'] ?? '',
+        deathday: json['deathday'] ?? '',
+        gender: json['gender'] ?? 0,
+        homepage: json['homepage'] ?? '',
+        id: json['id'] ?? 0,
+        imdbId: json['imdb_id'] ?? '',
+        knownForDepartment: json['known_for_department'] ?? '',
+        name: json['name'] ?? '',
+        placeOfBirth: json['place_of_birth'] ?? '',
+        popularity: json['popularity']?.toDouble() ?? 0.0,
+        profilePath: json['profile_path'] ?? '',
+        knownFor: _parseKnownFor(json['known_for'] ?? []),
+        imageUrls: imagesList);
   }
 
   static List<Movie> _parseKnownFor(List<dynamic> knownForList) {

@@ -1,3 +1,4 @@
+import 'package:axis_assignment/presentation/details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:axis_assignment/models/person_preview.dart';
 
@@ -23,7 +24,11 @@ class PersonPreviewWidget extends StatelessWidget {
         subtitle: Text(personPreview.knownForDepartment),
         trailing: Text('Popularity: ${personPreview.popularity.toString()}'),
         onTap: () {
-          _showDetailsDialog(context, personPreview);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      PersonDetailsPage(personPreview: personPreview)));
         },
       ),
     );

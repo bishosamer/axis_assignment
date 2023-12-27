@@ -32,13 +32,14 @@ class PersonAdapter extends TypeAdapter<Person> {
       popularity: fields[12] as double,
       profilePath: fields[13] as String,
       knownFor: (fields[14] as List).cast<Movie>(),
+      imageUrls: (fields[15] as List).cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Person obj) {
     writer
-      ..writeByte(15)
+      ..writeByte(16)
       ..writeByte(0)
       ..write(obj.adult)
       ..writeByte(1)
@@ -68,7 +69,9 @@ class PersonAdapter extends TypeAdapter<Person> {
       ..writeByte(13)
       ..write(obj.profilePath)
       ..writeByte(14)
-      ..write(obj.knownFor);
+      ..write(obj.knownFor)
+      ..writeByte(15)
+      ..write(obj.imageUrls);
   }
 
   @override
