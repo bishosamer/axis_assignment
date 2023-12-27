@@ -10,8 +10,11 @@ for running the app use ```flutter run --dart-define=API_KEY=API_KEY_HERE``` rep
 ## Packages used:
 
 flutter_bloc for state management
+
 hive for caching
+
 image_gallery_saver for saving images
+
 photo_view for displaying images
 
 
